@@ -31,7 +31,7 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public List<ProductDTO> getAlumnos(@RequestParam(required = false) String param) {
+    public List<ProductDTO> getProducts(@RequestParam(required = false) String param) {
         // Hacer validaciones de la peticion HTTP
         return productService.findAll();
     }
@@ -42,7 +42,7 @@ public class ProductController {
     }*/
 
     @PostMapping
-    public ResponseEntity<ProductDTO> createAlumno(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
         ProductDTO createdProduct = productService.save(productDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
@@ -60,7 +60,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<Void> deleteAlumno(@PathVariable Integer productId) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Integer productId) {
         productService.delete(productId);
         return ResponseEntity.noContent().build();
     }

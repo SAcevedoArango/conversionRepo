@@ -15,7 +15,7 @@ public class Product {
 
     @Id
     // @NotNull
-    @Column(name = "ProductId", nullable = false)
+    @Column(name = "productId", nullable = false)
     private Integer productId;
 
     // @NotBlank

@@ -24,7 +24,6 @@ CREATE TABLE Products (
     ProductId SERIAL PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
     description TEXT,
-    img VARCHAR(500),
     price DECIMAL(10,2) NOT NULL
 );
 
