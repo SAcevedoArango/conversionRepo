@@ -1,4 +1,4 @@
-package co.edu.udea.talentotech.programacion.intermedio.api_rest.dto;
+/*package co.edu.udea.talentotech.programacion.intermedio.api_rest.dto;
 
 import co.edu.udea.talentotech.programacion.intermedio.api_rest.entities.Materia;
 import jakarta.validation.constraints.NotBlank;
@@ -64,3 +64,4 @@ public class MateriaDTO {
                 '}';
     }
 }
+*/

@@ -1,4 +1,4 @@
-package co.edu.udea.talentotech.programacion.intermedio.api_rest.entities;
+/*package co.edu.udea.talentotech.programacion.intermedio.api_rest.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -72,4 +72,4 @@ public class Materia {
                 ", credito=" + credito +
                 '}';
     }
-}
+}*/

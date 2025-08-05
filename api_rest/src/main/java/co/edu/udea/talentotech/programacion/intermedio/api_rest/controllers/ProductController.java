@@ -2,10 +2,10 @@ package co.edu.udea.talentotech.programacion.intermedio.api_rest.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.udea.talentotech.programacion.intermedio.api_rest.dto.AlumnoDTO;
-import co.edu.udea.talentotech.programacion.intermedio.api_rest.dto.MateriaDTO;
-import co.edu.udea.talentotech.programacion.intermedio.api_rest.services.AlumnoService;
-import co.edu.udea.talentotech.programacion.intermedio.api_rest.services.impl.AlumnoServiceImpl;
+import co.edu.udea.talentotech.programacion.intermedio.api_rest.dto.ProductDTO;
+//import co.edu.udea.talentotech.programacion.intermedio.api_rest.dto.MateriaDTO;
+import co.edu.udea.talentotech.programacion.intermedio.api_rest.services.ProductService;
+import co.edu.udea.talentotech.programacion.intermedio.api_rest.services.impl.ProductServiceImpl;
 
 import java.util.List;
 
@@ -23,51 +23,51 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@RequestMapping("/api/alumnos")
+@RequestMapping("/api/products")
 @CrossOrigin(origins = "*")
-public class AlumnoController {
+public class ProductController {
 
     @Autowired
-    private AlumnoService alumnoService;
+    private ProductService productService;
 
     @GetMapping
-    public List<AlumnoDTO> getAlumnos(@RequestParam(required = false) String param) {
+    public List<ProductDTO> getAlumnos(@RequestParam(required = false) String param) {
         // Hacer validaciones de la peticion HTTP
-        return alumnoService.findAll();
+        return productService.findAll();
     }
 
-    @GetMapping("/{cedula}/materias")
+    /*@GetMapping("/{cedula}/materias")
     public ResponseEntity<List<MateriaDTO>> getMateriasByAlumno(@PathVariable Integer cedula) {
         return ResponseEntity.ok(alumnoService.findMateriasByAlumno(cedula));
-    }
+    }*/
 
     @PostMapping
-    public ResponseEntity<AlumnoDTO> createAlumno(@RequestBody AlumnoDTO alumnoDTO) {
-        AlumnoDTO createdAlumno = alumnoService.save(alumnoDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdAlumno);
+    public ResponseEntity<ProductDTO> createAlumno(@RequestBody ProductDTO productDTO) {
+        ProductDTO createdProduct = productService.save(productDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
-    @PostMapping("/{cedula}/materias/{codigoMateria}")
+    /*@PostMapping("/{cedula}/materias/{codigoMateria}")
     public ResponseEntity<Void> matricularMateria(@PathVariable Integer cedula, @PathVariable Short codigoMateria) {
         alumnoService.enrollMateria(cedula, codigoMateria);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }*/
+
+    @PutMapping("/{productId}")
+    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Integer productId, @RequestBody ProductDTO productDTO) {
+        ProductDTO updatedProduct = productService.update(productId, productDTO);
+        return ResponseEntity.ok(updatedProduct);
     }
 
-    @PutMapping("/{cedula}")
-    public ResponseEntity<AlumnoDTO> updateAlumno(@PathVariable Integer cedula, @RequestBody AlumnoDTO alumnoDTO) {
-        AlumnoDTO updatedAlumno = alumnoService.update(cedula, alumnoDTO);
-        return ResponseEntity.ok(updatedAlumno);
-    }
-
-    @DeleteMapping("/{cedula}")
-    public ResponseEntity<Void> deleteAlumno(@PathVariable Integer cedula) {
-        alumnoService.delete(cedula);
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<Void> deleteAlumno(@PathVariable Integer productId) {
+        productService.delete(productId);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{cedula}/materias/{codigoMateria}")
+    /*@DeleteMapping("/{cedula}/materias/{codigoMateria}")
     public ResponseEntity<Void> eliminarMateria(@PathVariable Integer cedula, @PathVariable Short codigoMateria) {
         alumnoService.unenrollMateria(cedula, codigoMateria);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
+    }*/
 }
